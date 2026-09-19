@@ -1,262 +1,130 @@
-# 🏋️ AI-Powered Fitness Recommendation Platform
+# Fitness Microservices Application
 
-A cloud-native **AI-Powered Fitness Recommendation Platform** built using a **Microservices Architecture**. The application provides personalized fitness recommendations, user management, and activity tracking by leveraging **Spring Boot, Spring Cloud, React, MongoDB, RabbitMQ, and AI services**.
+A simple fitness application built using **Spring Boot microservices** and a frontend application.
 
----
+## Tech Stack
 
-## 🚀 Features
-
-- 👤 User Registration & Authentication
-- 🏃 Activity Tracking
-- 🤖 AI-Based Fitness Recommendations
-- 🌐 RESTful APIs
-- 🚪 API Gateway
-- 🔍 Service Discovery (Eureka)
-- ⚙️ Centralized Configuration Server
-- 📨 RabbitMQ Messaging
-- 📊 MongoDB Database
-- 🎨 React Frontend
-- ☁️ Cloud-Native Microservices Architecture
-
----
-
-# 🏗️ System Architecture
-
-```text
-                        +----------------------+
-                        |    React Frontend    |
-                        +----------+-----------+
-                                   |
-                                   |
-                          API Gateway (8080)
-                                   |
-        -----------------------------------------------------
-        |                     |                    |
-        |                     |                    |
-+---------------+     +---------------+    +---------------+
-| User Service  |     |ActivityService|    |  AI Service   |
-+---------------+     +---------------+    +---------------+
-        |                     |                    |
-        -------------------------------
-                     |
-                RabbitMQ Events
-                     |
-                 MongoDB Database
-
-         Config Server (8888)
-                 |
-         Eureka Server (8761)
-```
-
----
-
-# 🛠️ Tech Stack
-
-## Backend
-
-- Java 17
+- Java
 - Spring Boot
 - Spring Cloud
-- Spring Security
-- Spring Cloud Gateway
-- Spring Cloud Config
-- Eureka Discovery Server
-- RabbitMQ
+- MySQL
 - MongoDB
+- Apache Kafka
+- Eureka Service Discovery
+- API Gateway
+- Spring WebFlux
+- React / Frontend
 - Maven
 
-## Frontend
+## Microservices
 
-- React 19
-- Redux Toolkit
-- React Router
-- Material UI (MUI)
-- Axios
-- Vite
+- **User Service** – Manages user information.
+- **Activity Service** – Manages fitness activities.
+- **AI Service** – Generates fitness recommendations using AI.
+- **Eureka Server** – Service discovery.
+- **Config Server** – Centralized configuration.
+- **API Gateway** – Entry point for microservices.
+- **Fitness Frontend** – User interface for the application.
 
-## Tools
-
-- Git
-- GitHub
-- IntelliJ IDEA
-- Postman
-
----
-
-# 📁 Project Structure
+## Architecture
 
 ```text
-ai-powered-fitness-recommendation-platform
-│
-├── configserver/
-├── eureka/
-├── gateway/
-├── userservice/
-├── activityservice/
-├── aiservice/
-├── fitness-app-frontend/
-└── README.md
+Frontend
+   |
+   v
+API Gateway
+   |
+   +------------------+
+   |        |         |
+   v        v         v
+User     Activity    AI Service
+Service   Service
+   |        |
+   +--------+-------> Kafka
+            |
+        MongoDB
+
+Eureka Server
+      |
+Service Discovery
+
+Config Server
+      |
+Centralized Configuration
 ```
 
----
+## Prerequisites
 
-# 📦 Microservices
+Make sure the following are installed:
 
-| Service | Description |
-|----------|-------------|
-| Config Server | Centralized configuration management |
-| Eureka Server | Service discovery |
-| API Gateway | Single entry point for all APIs |
-| User Service | User registration and management |
-| Activity Service | Tracks user workouts and activities |
-| AI Service | Generates personalized fitness recommendations |
-| React Frontend | User interface |
+- Java 24
+- Maven
+- MongoDB
+- Kafka
+- Node.js (for frontend)
 
----
+## How to Run
 
-# ⚙️ Application Workflow
-
-1. User opens the React application.
-2. Requests are sent to the API Gateway.
-3. Gateway routes requests to the appropriate microservice.
-4. All services register with Eureka Server.
-5. Configuration is fetched from Config Server.
-6. Activity events are exchanged using RabbitMQ.
-7. AI Service analyzes activity data and generates recommendations.
-8. MongoDB stores user and activity data.
-
----
-
-# 🚀 Getting Started
-
-## Clone Repository
+Clone the repository:
 
 ```bash
-git clone https://github.com/<your-github-username>/ai-powered-fitness-recommendation-platform.git
-
-cd ai-powered-fitness-recommendation-platform
+git clone <repository-url>
+cd fitness-micro-hindi-main
 ```
 
----
-
-## Start Microservices
-
-Run the services in the following order:
+Start the infrastructure services first:
 
 1. Config Server
 2. Eureka Server
-3. API Gateway
-4. User Service
-5. Activity Service
-6. AI Service
-7. React Frontend
+3. User Service
+4. Activity Service
+5. AI Service
+6. API Gateway
+7. Frontend
 
----
-
-## Backend
-
-Run each Spring Boot application.
+For each Spring Boot service:
 
 ```bash
 mvn spring-boot:run
 ```
 
-or
+For the frontend:
 
 ```bash
-./mvnw spring-boot:run
-```
-
----
-
-## Frontend
-
-```bash
-cd fitness-app-frontend
-
 npm install
-
-npm run dev
+npm start
 ```
 
----
+## Configuration
 
-# 📡 Default Ports
+Update the application configuration files with your local:
 
-| Service | Port |
-|----------|-----:|
-| Config Server | 8888 |
-| Eureka Server | 8761 |
-| API Gateway | 8080 |
-| User Service | Config Managed |
-| Activity Service | Config Managed |
-| AI Service | Config Managed |
-| React Frontend | 5173 |
+- MongoDB connection
+- Kafka configuration
+- Service ports
+- Config Server URL
+- Eureka Server URL
+- AI/API credentials, if required
 
----
+## Features
 
-# 📚 REST APIs
+- User management
+- Fitness activity tracking
+- AI-based fitness recommendations
+- Microservice-to-microservice communication
+- Kafka-based messaging
+- Service discovery using Eureka
+- Centralized configuration
+- API Gateway
 
-## User Service
+## Project Structure
 
-- Create User
-- Get User
-- Update User
-- Delete User
-
-## Activity Service
-
-- Add Activity
-- Get Activity History
-- Activity Summary
-
-## AI Service
-
-- Personalized Fitness Recommendation
-- AI Health Analysis
-- Workout Suggestions
-
----
-
-# ✨ Key Highlights
-
-- Microservices Architecture
-- AI Recommendation Engine
-- Event-Driven Communication
-- RESTful APIs
-- API Gateway Pattern
-- Service Discovery
-- Centralized Configuration
-- Scalable & Modular Design
-- Clean Code Structure
-
----
-
-# 🔮 Future Enhancements
-
-- JWT Authentication
-- Docker Support
-- Docker Compose
-- Kubernetes Deployment
-- CI/CD Pipeline
-- Swagger/OpenAPI Documentation
-- Prometheus & Grafana Monitoring
-- Notification Service
-- Diet Recommendation Engine
-- Workout Planner
-
----
-
-# 👨‍💻 Author
-
-**Vishal Mate**
-
-Java Backend Developer | Spring Boot | Microservices | React | Cloud | AI Applications
-
----
-
-# ⭐ Support
-
-If you like this project, consider giving it a **⭐ Star** on GitHub.
-
-It helps others discover the project and supports future development.
+```text
+fitness-micro-hindi-main/
+├── activityservice/
+├── aiservice/
+├── configserver/
+├── eureka/
+├── gateway/
+├── userservice/
+└── fitness-frontend/
