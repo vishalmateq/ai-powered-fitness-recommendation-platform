@@ -39,10 +39,10 @@ API Gateway
    v        v         v
 User     Activity    AI Service
 Service   Service
-   |        |
-   +--------+-------> Kafka
-            |
-        MongoDB
+              |        |
+              +--------+-------> Kafka
+                       |
+                    MongoDB
 
 Eureka Server
       |
@@ -57,8 +57,9 @@ Centralized Configuration
 
 Make sure the following are installed:
 
-- Java 24
+- Java 17
 - Maven
+- MySQL
 - MongoDB
 - Kafka
 - Node.js (for frontend)
@@ -95,16 +96,6 @@ npm install
 npm start
 ```
 
-## Configuration
-
-Update the application configuration files with your local:
-
-- MongoDB connection
-- Kafka configuration
-- Service ports
-- Config Server URL
-- Eureka Server URL
-- AI/API credentials, if required
 
 ## Features
 
