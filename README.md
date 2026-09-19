@@ -26,43 +26,6 @@ A fitness Activity & AI Recommendation application built using **Spring Boot mic
 - **API Gateway** – Entry point for microservices.
 - **Fitness Frontend** – User interface for the application.
 
-## Architecture
-
-```text
-Frontend
-   |
-   v
-API Gateway
-   |
-   +------------------+
-   |        |         |
-   v        v         v
-User     Activity    AI Service
-Service   Service
-              |        |
-              +--------+-------> Kafka
-                       |
-                    MongoDB
-
-Eureka Server
-      |
-Service Discovery
-
-Config Server
-      |
-Centralized Configuration
-```
-
-## Prerequisites
-
-Make sure the following are installed:
-
-- Java 17
-- Maven
-- MySQL
-- MongoDB
-- Kafka
-- Node.js (for frontend)
 
 # Activity & AI Recommendation Flow
 
@@ -101,6 +64,44 @@ Make sure the following are installed:
    * It processes/validates the response according to the application's requirements.
    * Finally, the recommendation is stored in the **Recommendation Database**.
 
+
+## Architecture
+
+```text
+Frontend
+   |
+   v
+API Gateway
+   |
+   +------------------+
+   |        |         |
+   v        v         v
+User     Activity    AI Service
+Service   Service
+              |        |
+              +--------+-------> Kafka
+                       |
+                    MongoDB
+
+Eureka Server
+      |
+Service Discovery
+
+Config Server
+      |
+Centralized Configuration
+```
+
+## Prerequisites
+
+Make sure the following are installed:
+
+- Java 17
+- Maven
+- MySQL
+- MongoDB
+- Kafka
+- Node.js (for frontend)
 
 ## How to Run
 
